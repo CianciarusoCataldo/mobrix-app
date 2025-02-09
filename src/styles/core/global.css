@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+}
+
+[data-mbx-id="cn"][data-mbx-page] {
+  height: 100vh;
+  width: 100vw;
+  --mbx-container-background-light: var(
+    --mbx-app-page-background-light,
+    var(--mbx-app-page-background)
+  );
+  --mbx-container-background-dark: var(
+    --mbx-app-page-background-dark,
+    var(--mbx-app-page-background)
+  );
+}

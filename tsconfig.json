@@ -17,7 +17,8 @@
     "paths": {
       "@src/*": ["./src/*"],
       "@store/*": ["./src/store/*"],
-      "@localization/*": ["./src/localization/*"]
+      "@localization/*": ["./src/localization/*"],
+      "@styles/*": ["./src/styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -4,7 +4,6 @@
   "description": "A fully configured React web app, based on Next.js, ready to be customized for every purpose",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev",
     "prestart": "next build",
     "start": "next start",
@@ -28,7 +27,6 @@
     "i18next-http-backend": "^3.0.2",
     "mobrix-ui": "^4.2.0",
     "next": "^15.1.6",
-    "next-i18next": "^15.4.2",
     "next-transpile-modules": "^10.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
