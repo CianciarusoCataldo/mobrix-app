@@ -2,15 +2,154 @@ body {
   margin: 0;
 }
 
-[data-mbx-id="cn"][data-mbx-page] {
+[data-mbx-app-container] {
   height: 100vh;
   width: 100vw;
-  --mbx-container-background-light: var(
+  display: flex;
+  flex-direction: column;
+}
+
+[data-mbx-id="cn"][data-mbx-app-page] {
+  --mbx-ovconbgl: var(
     --mbx-app-page-background-light,
-    var(--mbx-app-page-background)
+    var(
+      --mbx-app-page-background,
+      var(--mbx-container-background-light, var(--mbx-container-background))
+    )
   );
-  --mbx-container-background-dark: var(
+  --mbx-ovconbgd: var(
     --mbx-app-page-background-dark,
-    var(--mbx-app-page-background)
+    var(
+      --mbx-app-page-background,
+      var(--mbx-container-background-dark, var(--mbx-container-background))
+    )
+  );
+  --mbx-ovcontxtl: var(
+    --mbx-app-page-text-light,
+    var(
+      --mbx-app-page-text,
+      var(--mbx-container-text-light, var(--mbx-container-text))
+    )
+  );
+  --mbx-ovcontxtd: var(
+    --mbx-app-page-text-dark,
+    var(
+      --mbx-app-page-text,
+      var(--mbx-container-text-dark, var(--mbx-container-text))
+    )
+  );
+  overflow: scroll;
+  height: 100%;
+}
+
+[data-mbx-id="cn"][data-mbx-app-header] {
+  --mbx-ovconbgl: var(
+    --mbx-app-header-background-light,
+    var(
+      --mbx-app-header-background,
+      var(--mbx-container-background-light, var(--mbx-container-background))
+    )
+  );
+  --mbx-ovconbgd: var(
+    --mbx-app-header-background-dark,
+    var(
+      --mbx-app-header-background,
+      var(--mbx-container-background-dark, var(--mbx-container-background))
+    )
+  );
+  --mbx-ovcontxtl: var(
+    --mbx-app-header-text-light,
+    var(
+      --mbx-app-header-text,
+      var(--mbx-container-text-light, var(--mbx-container-text))
+    )
+  );
+  --mbx-ovcontxtd: var(
+    --mbx-app-header-text-dark,
+    var(
+      --mbx-app-header-text,
+      var(--mbx-container-text-dark, var(--mbx-container-text))
+    )
+  );
+}
+
+[data-mbx-id="cn"][data-mbx-app-footer] {
+  --mbx-ovconbgl: var(
+    --mbx-app-footer-background-light,
+    var(
+      --mbx-app-footer-background,
+      var(--mbx-container-background-light, var(--mbx-container-background))
+    )
+  );
+  --mbx-ovconbgd: var(
+    --mbx-app-footer-background-dark,
+    var(
+      --mbx-app-footer-background,
+      var(--mbx-container-background-dark, var(--mbx-container-background))
+    )
+  );
+  --mbx-ovcontxtl: var(
+    --mbx-app-footer-text-light,
+    var(
+      --mbx-app-footer-text,
+      var(--mbx-container-text-light, var(--mbx-container-text))
+    )
+  );
+  --mbx-ovcontxtd: var(
+    --mbx-app-footer-text-dark,
+    var(
+      --mbx-app-footer-text,
+      var(--mbx-container-text-dark, var(--mbx-container-text))
+    )
+  );
+}
+
+[data-mbx-id="drw"][data-mbx-app-drawer] {
+  --mbx-ovbgl: var(
+    --mbx-app-drawer-background-light,
+    var(
+      --mbx-app-drawer-background,
+      var(--mbx-drawer-background-light, var(--mbx-drawer-background))
+    )
+  );
+  --mbx-ovbgd: var(
+    --mbx-app-drawer-background-dark,
+    var(
+      --mbx-app-drawer-background,
+      var(--mbx-drawer-background-dark, var(--mbx-drawer-background))
+    )
+  );
+  --mbx-ovtxtl: var(
+    --mbx-app-drawer-text-light,
+    var(
+      --mbx-app-drawer-text,
+      var(--mbx-drawer-text-light, var(--mbx-drawer-text))
+    )
+  );
+  --mbx-ovtxtd: var(
+    --mbx-app-drawer-text-dark,
+    var(
+      --mbx-app-drawer-text,
+      var(--mbx-drawer-text-dark, var(--mbx-drawer-text))
+    )
+  );
+}
+
+[data-mbx-id="drw"][data-mbx-app-drawer]
+  > [data-mbx-id="icb"]
+  > [data-mbx-img="arr"] {
+  --mbx-icn-l: var(
+    --mbx-app-drawer-arrow-light,
+    var(
+      --mbx-app-drawer-arrow,
+      var(--mbx-app-drawer-text-light, var(--mbx-drawer-arrow-light))
+    )
+  );
+  --mbx-icn-d: var(
+    --mbx-app-drawer-arrow-dark,
+    var(
+      --mbx-app-drawer-arrow,
+      var(--mbx-app-drawer-text-dark, var(--mbx-drawer-arrow-dark))
+    )
   );
 }

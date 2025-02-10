@@ -1,10 +1,10 @@
-import i18next from "i18next";
-import { initReactI18next } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import I18NextHttpBackend from "i18next-http-backend";
-
 import { store } from "@store/index";
 import { initLocalization } from "@store/slices/localization";
+import i18next from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import I18NextHttpBackend from "i18next-http-backend";
+import { initReactI18next } from "react-i18next";
+
 import { SupportedLanguages } from "./types";
 
 const initializeI18next = async () => {
@@ -30,6 +30,7 @@ const initializeI18next = async () => {
       initLocalization({ lang: i18next.language as SupportedLanguages })
     );
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error("i18next initialization failed:", error);
   }
 };

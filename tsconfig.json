@@ -16,9 +16,13 @@
     "incremental": true,
     "paths": {
       "@src/*": ["./src/*"],
+      "@contents/*": ["./src/contents/*"],
       "@store/*": ["./src/store/*"],
       "@localization/*": ["./src/localization/*"],
-      "@styles/*": ["./src/styles/*"]
+      "@styles/*": ["./src/styles/*"],
+      "@atoms/*": ["./src/components/atoms/*"],
+      "@molecules/*": ["./src/components/molecules/*"],
+      "@organisms/*": ["./src/components/organisms/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

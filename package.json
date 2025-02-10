@@ -4,6 +4,7 @@
   "description": "A fully configured React web app, based on Next.js, ready to be customized for every purpose",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
     "dev": "next dev",
     "prestart": "next build",
     "start": "next start",
@@ -36,6 +37,11 @@
   "devDependencies": {
     "@types/node": "^22.13.1",
     "@types/react": "^19.0.8",
-    "typescript": "^5.7.3"
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
+    "@typescript-eslint/parser": "^8.23.0",
+    "eslint": "^9.20.0",
+    "eslint-config-next": "^15.1.6",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.23.0"
   }
 }
