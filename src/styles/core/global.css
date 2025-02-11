@@ -152,4 +152,30 @@ body {
       var(--mbx-app-drawer-text-dark, var(--mbx-drawer-arrow-dark))
     )
   );
+  --mbx-icn-hv-l: var(
+    --mbx-app-drawer-arrow-hover-light,
+    var(
+      --mbx-app-drawer-arrow-hover,
+      var(
+        --mbx-app-drawer-text-light,
+        var(
+          --mbx-drawer-arrow-hover-light,
+          var(--mbx-drawer-arrow-hover)
+        )
+      )
+    )
+  );
+  --mbx-icn-hv-d: var(
+    --mbx-app-drawer-arrow-hover-dark,
+    var(
+      --mbx-app-drawer-arrow-hover,
+      var(
+        --mbx-app-drawer-text-dark,
+        var(
+          --mbx-drawer-arrow-hover-dark,
+          var(--mbx-drawer-arrow-hover)
+        )
+      )
+    )
+  );
 }
