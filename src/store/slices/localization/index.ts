@@ -1,6 +1,6 @@
+import i18next from "@localization/index";
+import { SupportedLanguages } from "@localization/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { SupportedLanguages } from "@src/localization/types";
-import i18next from "i18next";
 import initialState from "./initial-state";
 
 const localizationSlice = createSlice({

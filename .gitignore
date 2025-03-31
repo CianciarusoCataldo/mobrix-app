@@ -41,6 +41,5 @@ build/
 .prettiercache
 
 # Test & coverage
-jest.config.js
 *.snap
 coverage/

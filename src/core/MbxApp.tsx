@@ -1,22 +1,57 @@
-import config from "@root/mobrix.config";
+"use client";
+
+import { initializeI18next } from "@localization/index";
 import { store } from "@store/index";
 import { setPage } from "@store/slices/routing";
 import { closeDrawer } from "@store/slices/ui";
 import { useMbxAppSelector } from "@store/utils";
 import { ComponentWithChildren, Container, Drawer, Modal } from "mobrix-ui";
 import { useRouter } from "next/router";
-import { JSX, useEffect } from "react";
+import React, { JSX, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Provider, useDispatch } from "react-redux";
+import { initConfig } from "./config";
+import { MobrixAppConfig } from "./types/global";
 
-const MainProvider = ({ children }: ComponentWithChildren<JSX.Element>) => {
+const RouterProvider = ({
+  children,
+}: ComponentWithChildren<(JSX.Element | undefined)[]>) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { pathname } = router;
   const { t } = useTranslation("page-titles");
   const title = t(pathname);
+
+  useEffect(() => {
+    dispatch(setPage(pathname));
+
+    if (document.title !== title) {
+      document.title = title;
+    }
+  }, [dispatch, pathname, title]);
+
+  return children;
+};
+
+const MainProvider = ({ children }: ComponentWithChildren<JSX.Element>) => {
+  const dispatch = useDispatch();
+  const { loading } = useMbxAppSelector((state) => state.localization);
   const { dark, drawerOpen } = useMbxAppSelector((state) => state.ui);
   const { isOpen, type, context } = useMbxAppSelector((state) => state.modal);
+  const [config, setConfig] = useState<MobrixAppConfig>({});
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      initConfig().then(()=>{
+              // @ts-expect-error config is already initialized
+      initializeI18next(window.mobrixConfig.localization);
+      // @ts-expect-error config is already initialized
+      setConfig(window.mobrixConfig);
+      });
+
+    }
+  }, [setConfig]);
+
   const {
     header: Header,
     footer: Footer,
@@ -30,16 +65,10 @@ const MainProvider = ({ children }: ComponentWithChildren<JSX.Element>) => {
     context: Record<string, any>;
   }) => JSX.Element = modals && type ? () => <div /> : () => <div />;
 
-  useEffect(() => {
-    dispatch(setPage(pathname));
-
-    if (document.title !== title) {
-      document.title = title;
-    }
-  }, [dispatch, pathname, title]);
-
-  return (
-    <>
+  return loading ? (
+    <div />
+  ) : (
+    <RouterProvider>
       {DrawerContent && (
         <Drawer
           dark={dark}
@@ -68,7 +97,7 @@ const MainProvider = ({ children }: ComponentWithChildren<JSX.Element>) => {
           <Footer />
         </Container>
       )}
-    </>
+    </RouterProvider>
   );
 };
 

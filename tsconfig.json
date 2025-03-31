@@ -18,13 +18,15 @@
       "@root/*": ["./*"],
       "@src/*": ["./src/*"],
       "@store/*": ["./src/store/*"],
+      "@mobrix-app-core/*": ["./src/core/*"],
       "@localization/*": ["./src/localization/*"],
       "@styles/*": ["./src/styles/*"],
+      "@components/*": ["./src/components/*"],
       "@atoms/*": ["./src/components/atoms/*"],
       "@molecules/*": ["./src/components/molecules/*"],
       "@organisms/*": ["./src/components/organisms/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "mobrix.config.js", "src/core/config.js", "pages/_document.js"],
   "exclude": ["node_modules"]
 }

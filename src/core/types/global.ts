@@ -9,4 +9,11 @@ export interface MobrixAppConfig {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ({ context }: { context: Record<string, any> }) => JSX.Element
   >;
+  localization?: {
+    fallbackLanguage?: string;
+    loadPath?: string;
+    namespaces?: string[];
+    defaultNamespace?: string;
+    supportedLanguages?: string[];
+  };
 }
