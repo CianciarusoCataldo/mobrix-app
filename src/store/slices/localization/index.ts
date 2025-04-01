@@ -6,6 +6,10 @@ import initialState from "./initial-state";
 const localizationSlice = createSlice({
   name: "localization",
   initialState,
+  selectors: {
+    isLocalizationLoading: (state) => state.loading,
+    getLanguage: (state) => state.lang,
+  },
   reducers: {
     init: (state, action: PayloadAction<{ lang: SupportedLanguages }>) => {
       state.lang = action.payload.lang;
@@ -20,5 +24,8 @@ const localizationSlice = createSlice({
 
 export const { init: initLocalization, "set-language": setLanguage } =
   localizationSlice.actions;
+
+export const { isLocalizationLoading, getLanguage } =
+  localizationSlice.selectors;
 
 export default localizationSlice;

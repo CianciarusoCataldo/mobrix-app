@@ -7,7 +7,7 @@
     "dev": "next dev",
     "prestart": "npm run build",
     "start": "next start",
-    "build": "ANALYZE=true next build",
+    "build": "next build",
     "export": "next export",
     "test": "jest --verbose --coverage --config tests/jest.config.js"
   },

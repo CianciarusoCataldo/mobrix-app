@@ -4,6 +4,10 @@ import routingInitialState from "./initial-state";
 const uiSlice = createSlice({
   name: "ui",
   initialState: routingInitialState,
+  selectors: {
+    isDarkMode: (state) => state.dark,
+    isDrawerOpen: (state) => state.drawerOpen,
+  },
   reducers: {
     "set-dark-mode": (state, action: PayloadAction<boolean>) => {
       state.dark = action.payload;
@@ -30,5 +34,7 @@ export const {
   "close-drawer": closeDrawer,
   "switch-drawer-visibility": switchDrawerVisibility,
 } = uiSlice.actions;
+
+export const { isDarkMode, isDrawerOpen } = uiSlice.selectors;
 
 export default uiSlice;

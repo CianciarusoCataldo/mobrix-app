@@ -5,10 +5,16 @@ import { ModalState } from "./types";
 const modalSlice = createSlice({
   name: "modal",
   initialState: routingInitialState,
+  selectors: {
+    isModalOpened: (state) => state.isOpen,
+    getModalType: (state) => state.type,
+    getModalContext: (state) => state.context,
+    getModalData: (state) => state,
+  },
   reducers: {
     "open-modal": (
       state,
-      action: PayloadAction<{ type: string; context?: ModalState["context"] }>
+      action: PayloadAction<{ type: string; context?: ModalState["context"] }>,
     ) => {
       state.isOpen = true;
       state.type = action.payload.type;
@@ -24,5 +30,8 @@ const modalSlice = createSlice({
 
 export const { "open-modal": openModal, "close-modal": closeModal } =
   modalSlice.actions;
+
+export const { isModalOpened, getModalContext, getModalData, getModalType } =
+  modalSlice.selectors;
 
 export default modalSlice;
