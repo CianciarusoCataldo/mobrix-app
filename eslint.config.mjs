@@ -1,65 +1,51 @@
-import { FlatCompat } from "@eslint/eslintrc";
+import { defineConfig } from "eslint/config";
 import js from "@eslint/js";
-import typescriptEslint from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import tseslint from "typescript-eslint";
+import pluginReact from "eslint-plugin-react";
+import pluginNext from "eslint-plugin-next";
+import pluginImport from "eslint-plugin-import";
+import pluginPrettier from "eslint-plugin-prettier";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
-
-export default [
-  ...compat.extends(
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
-  ),
+export default defineConfig([
   {
-    ignores: [
-      "node_modules",
-      ".next",
-      "dist",
-      "build",
-      "public",
-      "config",
-      "out",
-      "*.config.js",
-    ],
-  },
-  {
-    plugins: {
-      "@typescript-eslint": typescriptEslint,
-    },
-
+    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     languageOptions: {
-      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+      },
+    },
+    plugins: {
+      react: pluginReact,
+      next: pluginNext,
+      import: pluginImport,
+      prettier: pluginPrettier,
     },
     rules: {
-      "react/react-in-jsx-scope": "off",
-      "@typescript-eslint/no-unused-vars": ["error"],
-      "no-console": "warn",
-
+      ...js.configs.recommended.rules,
+      ...tseslint.configs.recommended.rules,
+      ...pluginReact.configs.flat.recommended.rules,
+      ...pluginNext.configs.recommended.rules,
       "import/order": [
         "error",
         {
           groups: [
-            ["builtin", "external", "internal"],
+            "builtin",
+            "external",
+            "internal",
             "parent",
             "sibling",
             "index",
           ],
-          alphabetize: {
-            order: "asc", // "asc" per ordine crescente
-            caseInsensitive: true, // Se vuoi ignorare la differenza tra maiuscole e minuscole
-          },
+          "newlines-between": "always",
+          alphabetize: { order: "asc", caseInsensitive: true },
         },
       ],
-      "import/no-anonymous-default-export": "off", // Disabilita il controllo per le esportazioni anonime
+      "import/no-duplicates": "error",
+      "import/newline-after-import": "error",
+      "react/react-in-jsx-scope": "off",
+      "next/no-img-element": "off",
+      "prettier/prettier": "error",
     },
   },
-];
+]);
